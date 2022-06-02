@@ -19,6 +19,6 @@
         <item name="postSplashScreenTheme">@style/Theme.Dogged</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_paw</item>
         <item name="windowSplashScreenBackground">@color/purple</item>
-        <item name="windowSplashScreenAnimationDuration">2000</item>
+        <item name="windowSplashScreenAnimationDuration">2500</item>
     </style>
 </resources>

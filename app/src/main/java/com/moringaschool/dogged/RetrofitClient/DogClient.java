@@ -1,8 +1,11 @@
 package com.moringaschool.dogged.RetrofitClient;
 
+import static com.moringaschool.dogged.constants.Constants.DOG_BASE_URL;
+
 import com.moringaschool.dogged.interfaces.DogApi;
 
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DogClient {
     // Dog Client is what is responsible for making API calls
@@ -16,6 +19,10 @@ public class DogClient {
         if(retrofit==null){
            retrofit= new Retrofit.Builder()
                    //this is our base url for the Dog API
+                   .baseUrl(DOG_BASE_URL)
+                   .addConverterFactory(GsonConverterFactory.create()) //the library is responsible fro converting json data to java objects using our models
+                   .build();
+
 
         }
         return retrofit.create(DogApi.class);

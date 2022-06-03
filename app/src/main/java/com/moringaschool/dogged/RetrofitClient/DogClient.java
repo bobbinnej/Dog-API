@@ -16,6 +16,7 @@ public class DogClient {
         if(retrofit==null){
            retrofit= new Retrofit.Builder()
                    //this is our base url for the Dog API
+
         }
         return retrofit.create(DogApi.class);
     }

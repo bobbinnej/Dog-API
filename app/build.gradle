@@ -43,5 +43,15 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     //gson dependency
     implementation 'com.google.code.gson:gson:2.8.7'
+    //material design dependency
+    implementation 'com.google.android.material:material:1.2.0-alpha02'
+
+    //glide dependency
+    // recycler view dependency
+    //butterknife dependency
+    implementation 'com.jakewharton:butterknife:10.2.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
+    
+
 
 }

@@ -51,6 +51,8 @@ dependencies {
     //butterknife dependency
     implementation 'com.jakewharton:butterknife:10.2.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
+    //viewpager dependency
+    implementation 'androidx.viewpager:viewpager:1.1.0-alpha01'
     
 
 

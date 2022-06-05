@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--customize a style for tab items-->
+    <style name="TabLayoutTextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">
+        <item name="android:textSize">10sp</item>
+        <item name="textAllCaps">true</item>
+    </style>
+
+</resources>

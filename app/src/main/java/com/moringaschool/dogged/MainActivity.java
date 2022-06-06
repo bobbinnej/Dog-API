@@ -26,8 +26,7 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
     @BindView(R.id.toolbar) Toolbar toolbar;
-    @BindView(R.id.view_pager)
-    ViewPager viewpager;
+    @BindView(R.id.view_pager) ViewPager viewpager;
     @BindView(R.id.tab_layout)   TabLayout tablayout;
 
 
@@ -52,14 +51,25 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();// this particula line will hide the title bar
         toolbar.setTitleTextColor(Color.WHITE);
 
-        allbreedsfragment=new AllBreeds();
+        randombreedfragment=new RandomBreed();
         bybreedfragment=new ByBreed();
         bysubbreedfragment=new BySubBreed();
-        randombreedfragment=new RandomBreed();
+        allbreedsfragment=new AllBreeds();
 
         tablayout.setupWithViewPager(viewpager);
         //viewpager adapter for our tab layout to add dynamic views
         ViewPagerAdapter viewPagerAdapter=new ViewPagerAdapter(getSupportFragmentManager(),0);
+        viewPagerAdapter.addFragment( randombreedfragment,"Random");
+        viewPagerAdapter.addFragment(bybreedfragment,"Breed");
+        viewPagerAdapter.addFragment( bysubbreedfragment,"SubBreed");
+        viewPagerAdapter.addFragment(allbreedsfragment,"AllBreed");
+        viewpager.setAdapter(viewPagerAdapter);
+
+        //display our icons for the titles
+        tablayout.getTabAt(0).setIcon(R.drawable.ic_dog_breed_svgrepo_com);
+        tablayout.getTabAt(1).setIcon(R.drawable.ic_breed2);
+        tablayout.getTabAt(2).setIcon(R.drawable.ic_subbreed1);
+        tablayout.getTabAt(3).setIcon(R.drawable.ic_allbreed1);
 
     }
   // inner class for our viewpager adapter that extende fragment adapter pager class
@@ -68,14 +78,15 @@ public class MainActivity extends AppCompatActivity {
         //list to store our fragements
       private List<Fragment>fragments= new ArrayList<>();
       // this list will store our fragment titles
-      private List<String>fragmentsTitle= new ArrayList<>();
+      private List<String>fragmentTitle= new ArrayList<>();
 
       public ViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
           super(fm, behavior);
       }
 
-      public void addFragment(Fragment fragment){
-
+      public void addFragment(Fragment fragment, String title){
+                fragments.add(fragment);
+                fragmentTitle.add(title);
       }
 
       @NonNull
@@ -93,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
       @Nullable
       @Override
       public CharSequence getPageTitle(int position) {
-          return fragmentsTitle.get(position);
+          return fragmentTitle.get(position);
       }
   }
 }

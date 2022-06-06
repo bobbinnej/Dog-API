@@ -1,58 +1,59 @@
 package com.moringaschool.dogged;
 
+import android.graphics.ColorSpace;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link AllBreeds#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.moringaschool.dogged.RetrofitClient.DogClient;
+import com.moringaschool.dogged.interfaces.DogApi;
+import com.moringaschool.dogged.models.ListAllBreedsResponse;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+
 public class AllBreeds extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public AllBreeds() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AllBreeds.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static AllBreeds newInstance(String param1, String param2) {
-        AllBreeds fragment = new AllBreeds();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
+    DogApi dogApi;
+    RecyclerView recyclerView;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
+        dogApi= DogClient.getClient();
+        getAllBreed();
+    }
+    //method to fetch my data
+    public void getAllBreed(){
+       Call<ListAllBreedsResponse> call=dogApi.getAllBreeds();
+       call.enqueue(new Callback<ListAllBreedsResponse>() {
+           @Override
+           public void onResponse(Call<ListAllBreedsResponse> call, Response<ListAllBreedsResponse> response) {
+               ListAllBreedsResponse listAllBreedsResponse=response.body();
+
+
+           }
+
+           @Override
+           public void onFailure(Call<ListAllBreedsResponse> call, Throwable t) {
+
+           }
+       });
     }
 
     @Override
@@ -60,5 +61,14 @@ public class AllBreeds extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_all_breeds, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        recyclerView=view.findViewById(R.id.recycle);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 }

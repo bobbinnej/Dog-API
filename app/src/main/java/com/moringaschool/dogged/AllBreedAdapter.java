@@ -15,12 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AllBreedAdapter extends RecyclerView.Adapter<AllBreedAdapter.ViewHolder> {
-    private ArrayList<ListAllBreedsResponse>modelAdapter;
-    private Context context;
-
-
-    public AllBreedAdapter(ArrayList<ListAllBreedsResponse>modelAdapter) {
-        this.modelAdapter=modelAdapter;
+    private List<ListAllBreedsResponse> listAllBreedsResponses;
+    public AllBreedAdapter(List<ListAllBreedsResponse> listAllBreedsResponses) {
+        this.listAllBreedsResponses = listAllBreedsResponses;
     }
 
     @NonNull
@@ -28,26 +25,27 @@ public class AllBreedAdapter extends RecyclerView.Adapter<AllBreedAdapter.ViewHo
     public AllBreedAdapter.ViewHolder onCreateViewHolder( ViewGroup  parent, int viewType) {
 
         // create a viewholder and inflate its xml layout
-        View view= LayoutInflater.from(context).inflate(R.layout.allbreed_item,parent,false);
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.allbreed_item,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull AllBreedAdapter.ViewHolder holder, int position) {
+      holder.breedName.setText(listAllBreedsResponses.get(position).getMessage());
 
     }
-
     @Override
     public int getItemCount() {
+
         return 0;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView Breed;
+        TextView breedName;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            Breed=itemView.findViewById(R.id.breedName);
+            breedName=itemView.findViewById(R.id.breedName);
         }
     }
 }

@@ -45,7 +45,7 @@ public class AllBreeds extends Fragment {
 
     }
     //method to fetch my data
-    private void getAllBreeds(){
+    public void getAllBreeds(){
         //call our client
         Call<ListAllBreedsResponse> call=dogApi.getAllBreeds();
         call.enqueue(new Callback<ListAllBreedsResponse>() {
@@ -59,7 +59,7 @@ public class AllBreeds extends Fragment {
             @Override
             public void onFailure(Call<ListAllBreedsResponse> call, Throwable t) {
 
-                Log.e(TAG,"OOOOOOPERATION FAILED"+t.getMessage());
+                Log.e(TAG,"OOOOOOPERATION  get All Breed FAILED"+t.getMessage());
 
             }
         });

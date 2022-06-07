@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.moringaschool.dogged.models.RandomBreedResponse;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -28,14 +29,14 @@ public class RandomBreedAdapter extends RecyclerView.Adapter<RandomBreedAdapter.
     public itemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         // create a viewholder and inflate its xml layout
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_random_breed,parent,false);
-        return new itemViewHolder(view);
-
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.random_breed_item,parent,false);
+        itemViewHolder viewHolder= new itemViewHolder(view);
+           return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull itemViewHolder holder, int position) {
-    holder.txt.setText(random.get(position).getMessage());
+         holder
     }
 
     @Override
@@ -50,6 +51,10 @@ public class RandomBreedAdapter extends RecyclerView.Adapter<RandomBreedAdapter.
             txt=itemView.findViewById(R.id.random_title);
             txt=itemView.findViewById(R.id.nextRandom);
         }
+    }
+
+    public bindRandom(RandomBreedResponse randomBreedResponse){
+        Picasso.get()
     }
 
 }

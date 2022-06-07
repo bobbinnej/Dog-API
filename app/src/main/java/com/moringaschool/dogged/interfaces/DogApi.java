@@ -20,7 +20,7 @@ public interface DogApi {
 
     //method for getting random images of different dog breeds
     @GET("breeds/image/random/3")
-    Call<List<RandomBreedResponse>> getRandomBreed();
+    Call<RandomBreedResponse> getRandomBreed();
 
    //method to getting different dog images from a breed
     @GET("breed/hound/images")

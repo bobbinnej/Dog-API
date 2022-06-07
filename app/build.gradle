@@ -54,6 +54,9 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
     //viewpager dependency
     implementation 'androidx.viewpager:viewpager:1.1.0-alpha01'
+    // Parceler
+    implementation 'org.parceler:parceler-api:1.1.12'
+    annotationProcessor 'org.parceler:parceler:1.1.12'
     
 
 

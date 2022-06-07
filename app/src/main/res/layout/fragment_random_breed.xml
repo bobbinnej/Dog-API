@@ -18,17 +18,5 @@
         android:textColor="@color/brown"
         android:textSize="15sp" />
 
-    <GridView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:numColumns="2"
-        android:horizontalSpacing="2dp"
-        android:verticalSpacing="2dp"
-        android:layout_margin="2dp"
-        android:id="@+id/randomGridView">
-
-    </GridView>
-
-
 
 </FrameLayout>

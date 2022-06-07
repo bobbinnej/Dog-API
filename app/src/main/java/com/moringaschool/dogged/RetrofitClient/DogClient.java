@@ -23,7 +23,6 @@ public class DogClient {
                    .addConverterFactory(GsonConverterFactory.create()) //the library is responsible fro converting json data to java objects using our models
                    .build();
 
-
         }
         return retrofit.create(DogApi.class);
     }

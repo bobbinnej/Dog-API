@@ -6,9 +6,29 @@
     tools:context=".RandomBreed">
 
     <!-- TODO: Update blank fragment layout -->
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="random breed " />
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/courgette"
+        android:text="Random images from all dog collections "
+        android:textAlignment="center"
+        android:textColor="@color/brown"
+        android:textSize="15sp" />
+
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="2"
+        android:horizontalSpacing="2dp"
+        android:verticalSpacing="2dp"
+        android:layout_margin="2dp"
+        android:id="@+id/randomGridView">
+
+    </GridView>
+
+
 
 </FrameLayout>

@@ -1,6 +1,10 @@
 package com.moringaschool.dogged.interfaces;
 
+import com.moringaschool.dogged.models.BreedResponse;
 import com.moringaschool.dogged.models.ListAllBreedsResponse;
+import com.moringaschool.dogged.models.RandomBreedResponse;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -13,6 +17,14 @@ public interface DogApi {
    Call<ListAllBreedsResponse> getAllBreeds();  //getAllBreeds is our method which can be any name you want.
 
 
+    //method for getting random images of different dog breeds
+    @GET("breeds/image/random/3")
+    Call<List<RandomBreedResponse>> getRandomBreed();
 
+   //method to getting different dog images from a breed
+    @GET("breed/hound/images")
+    Call<BreedResponse> getBreed();
 
+    //method to get different images from a subbreed
+    @GET
 }

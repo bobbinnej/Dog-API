@@ -14,29 +14,37 @@ import com.moringaschool.dogged.models.ListAllBreedsResponse;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AllBreedAdapter extends RecyclerView.Adapter<AllBreedAdapter.ViewHolder> {
+public class AllBreedAdapter extends RecyclerView.Adapter<AllBreedViewHolder> {
     private List<ListAllBreedsResponse> listAllBreedsResponses;
     public AllBreedAdapter(List<ListAllBreedsResponse> listAllBreedsResponses) {
         this.listAllBreedsResponses = listAllBreedsResponses;
     }
 
+
+
+
+
+
+
+
+
+
     @NonNull
     @Override
-    public AllBreedAdapter.ViewHolder onCreateViewHolder( ViewGroup  parent, int viewType) {
+    public AllBreedViewHolder onCreateViewHolder( ViewGroup  parent, int viewType) {
 
         // create a viewholder and inflate its xml layout
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.allbreed_item,parent,false);
-        return new ViewHolder(view);
+        return new AllBreedViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AllBreedAdapter.ViewHolder holder, int position) {
-      holder.breedName.setText(listAllBreedsResponses.get(position).getMessage());
+    public void onBindViewHolder(@NonNull AllBreedViewHolder holder, int position) {
+      holder.getView().setText(listAllBreedsResponses.get(position).getMessage());
 
     }
     @Override
     public int getItemCount() {
-
         return 0;
     }
 

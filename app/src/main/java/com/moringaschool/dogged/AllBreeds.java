@@ -1,5 +1,7 @@
 package com.moringaschool.dogged;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -8,9 +10,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.moringaschool.dogged.RetrofitClient.DogClient;
 import com.moringaschool.dogged.interfaces.DogApi;
@@ -30,16 +34,11 @@ public class AllBreeds extends Fragment {
     AllBreedAdapter adapter;
     List<ListAllBreedsResponse>listAllBreedsResponses;
 
+
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        recyclerView=view.findViewById(R.id.recycle);
-        recyclerView.setHasFixedSize(true);
-        RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(layoutManager);
-        adapter=new AllBreedAdapter(listAllBreedsResponses);
-        recyclerView.setAdapter(adapter);
 
         dogApi= DogClient.getClient();
         getAllBreeds();
@@ -54,33 +53,29 @@ public class AllBreeds extends Fragment {
             public void onResponse(Call<ListAllBreedsResponse> call, Response<ListAllBreedsResponse> response) {
 
                 ListAllBreedsResponse listAllBreedsResponses=response.body();
+                int status=response.code();
             }
 
             @Override
             public void onFailure(Call<ListAllBreedsResponse> call, Throwable t) {
 
+                Log.e(TAG,"OOOOOOPERATION FAILED"+t.getMessage());
+
             }
         });
 
     }
-
-
-
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-
-    }
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_all_breeds, container, false);
+        View view= inflater.inflate(R.layout.fragment_all_breeds,container,false);
+        recyclerView=view.findViewById(R.id.recycle);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        recyclerView.setAdapter(new AllBreedAdapter(listAllBreedsResponses));
+
+        return view;
     }
 
 

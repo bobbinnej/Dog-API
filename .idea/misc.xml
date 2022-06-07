@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/drawable/ic_paw.xml" value="0.181" />
         <entry key="app/src/main/res/font/charm.xml" value="0.22395833333333334" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_random_breed.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/layout/allbreed_item.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/layout/fragment_all_breeds.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_browse_breed_list.xml" value="0.19375" />

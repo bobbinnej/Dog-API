@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,15 +9,42 @@
     <!-- TODO: Update blank fragment layout -->
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="16dp"
+        android:id="@+id/textView"
+        android:layout_width="403dp"
+        android:layout_height="731dp"
         android:fontFamily="@font/courgette"
         android:text="Random images from all dog collections "
         android:textAlignment="center"
         android:textColor="@color/brown"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/nextRandom"
+        android:layout_width="285dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="580dp"
+        android:background="@color/purple"
+        android:fontFamily="@font/courgette"
+        android:gravity="center"
+        android:text="Next Image"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/randomImageView"
+        android:layout_width="120dp"
+        android:layout_height="136dp"
+        android:layout_marginEnd="128dp"
+        android:layout_marginBottom="380dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.22000003"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

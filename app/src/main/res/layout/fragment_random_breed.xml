@@ -17,24 +17,23 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@android:color/black"
-        android:paddingTop="40dp"
-
+        android:paddingTop="10dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="5dp">
 
         <TextView
             android:id="@+id/randomTitle"
             android:layout_width="379dp"
-            android:layout_height="60dp"
+            android:layout_height="80dp"
             android:layout_marginBottom="20dp"
             android:fontFamily="@font/courgette"
             android:gravity="center"
-            android:paddingLeft="10dp"
+            android:paddingLeft="5dp"
             android:text="Random images from all Dog Collections"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="17sp" />
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView

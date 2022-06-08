@@ -6,9 +6,37 @@
     tools:context=".ByBreed">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="by breed" />
+   <LinearLayout
+       android:layout_height="match_parent"
+       android:layout_width="match_parent"
+       android:background="@color/black"
+       android:orientation="vertical">
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="100dp"
+           android:background="@color/white"
+           android:paddingTop="10dp"
+           android:paddingLeft="10dp"
+           android:paddingRight="10dp"
+           android:layout_marginBottom="5dp">
+
+           <TextView
+               android:layout_width="400dp"
+               android:layout_height="80dp"
+               android:id="@+id/breedTitle"
+               android:textColor="@color/black"
+               android:text="An array of all images from a breed"
+               android:gravity="center"
+               android:textSize="20sp"
+               android:fontFamily="@font/courgette"/>
+       </RelativeLayout>
+
+       <androidx.recyclerview.widget.RecyclerView
+           android:layout_width="match_parent"
+           android:layout_height="500dp"
+           android:id="@+id/breedRecycler"/>
+
+
+   </LinearLayout>
 
 </FrameLayout>

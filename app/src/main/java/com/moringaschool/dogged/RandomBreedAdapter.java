@@ -47,6 +47,7 @@ public class RandomBreedAdapter extends RecyclerView.Adapter<RandomBreedAdapter.
 
     @Override
     public int getItemCount() {
+
         return random.size();
     }
 

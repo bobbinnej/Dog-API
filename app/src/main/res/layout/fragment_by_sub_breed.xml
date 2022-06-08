@@ -6,9 +6,36 @@
     tools:context=".BySubBreed">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="by sub breed " />
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/maroon"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="1dp">
+
+            <TextView
+                android:layout_width="400dp"
+                android:layout_height="80dp"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/courgette"
+                android:textAlignment="center"
+                android:text="An array of all sub-breeds from a breed"
+                android:gravity="center"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/subbreedRecycler"/>
+
+        </RelativeLayout>
+    </LinearLayout>
 
 </FrameLayout>

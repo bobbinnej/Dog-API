@@ -40,7 +40,8 @@ public class BreedAdapter extends RecyclerView.Adapter<BreedAdapter.breedViewHol
     }
 
     @Override
-    public int getItemCount() {
+    public int getItemCount()
+    {
         return breed.size();
     }
 

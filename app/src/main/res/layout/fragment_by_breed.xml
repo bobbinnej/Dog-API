@@ -25,7 +25,7 @@
                android:layout_height="80dp"
                android:id="@+id/breedTitle"
                android:textColor="@color/black"
-               android:text="An array of all images from a breed"
+               android:text="An array of all images from hound-afghan breed"
                android:gravity="center"
                android:textSize="20sp"
                android:fontFamily="@font/courgette"/>
@@ -33,7 +33,7 @@
 
        <androidx.recyclerview.widget.RecyclerView
            android:layout_width="match_parent"
-           android:layout_height="500dp"
+           android:layout_height="match_parent"
            android:id="@+id/breedRecycler"/>
 
 

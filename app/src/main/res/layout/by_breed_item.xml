@@ -7,7 +7,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_paw"
-        android:scaleType="centerCrop"
-        android:id="@+id/breedImageView"/>
+
+        android:id="@+id/breedImageView"
+        android:adjustViewBounds="false"
+        />
 
 </LinearLayout>

@@ -11,7 +11,7 @@ public class AllBreedViewHolder extends RecyclerView.ViewHolder {
 
     public AllBreedViewHolder(@NonNull View itemView) {
         super(itemView);
-        view=itemView.findViewById(R.id.breedName);
+
     }
     public TextView getView(){
         return view;

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
@@ -22,6 +23,8 @@ import com.moringaschool.dogged.models.RandomBreedResponse;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -31,13 +34,18 @@ public class RandomBreed extends Fragment {
     DogApi dogApi;
     private List<RandomBreedResponse> random;
     private RandomBreedAdapter randomBreedAdapter;
-    private RecyclerView recyclerView;
+    LinearLayoutManager linearLayoutManager;
+    @BindView(R.id.randomRecycler) RecyclerView randomRecycler;
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+         ButterKnife.bind(this,view);
         dogApi= DogClient.getClient();
+
+        randomRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         getRandomBreed();
+
+
     }
 
     public void getRandomBreed(){
@@ -48,6 +56,13 @@ public class RandomBreed extends Fragment {
 
                 int status = response.code();
                 RandomBreedResponse randomBreedResponse=response.body();
+                List<String> list=randomBreedResponse.getMessage();
+                randomRecycler.setAdapter(new RandomBreedAdapter(list, getContext()));
+
+
+
+
+
             }
 
             @Override
@@ -62,10 +77,7 @@ public class RandomBreed extends Fragment {
                              Bundle savedInstanceState) {
 
         View view=inflater.inflate(R.layout.fragment_random_breed, container, false);
-        random=new ArrayList<>();
 
-        randomBreedAdapter= new RandomBreedAdapter(random);
-        // Inflate the layout for this fragment
         return view;
     }
 

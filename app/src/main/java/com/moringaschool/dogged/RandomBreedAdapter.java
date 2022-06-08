@@ -5,21 +5,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.moringaschool.dogged.models.RandomBreedResponse;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class RandomBreedAdapter extends RecyclerView.Adapter<RandomBreedAdapter.itemViewHolder> {
     private Context context;
-    private List<RandomBreedResponse> random;
+    private List<String> random;
 
-    public RandomBreedAdapter(List<RandomBreedResponse> random) {
+    public RandomBreedAdapter(List<String> random, Context context) {
         this.random = random;
         this.context=context;
     }
@@ -36,7 +41,8 @@ public class RandomBreedAdapter extends RecyclerView.Adapter<RandomBreedAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull itemViewHolder holder, int position) {
-         holder
+        Glide.with(context).load(random.get(position)).into(holder.randomImage);
+
     }
 
     @Override
@@ -45,16 +51,13 @@ public class RandomBreedAdapter extends RecyclerView.Adapter<RandomBreedAdapter.
     }
 
     public class itemViewHolder extends RecyclerView.ViewHolder{
-         TextView txt;
+        @BindView(R.id.randomImageView) ImageView randomImage;
+
         public itemViewHolder(@NonNull View itemView) {
             super(itemView);
-            txt=itemView.findViewById(R.id.random_title);
-            txt=itemView.findViewById(R.id.nextRandom);
-        }
-    }
+            ButterKnife.bind(this,itemView);
 
-    public bindRandom(RandomBreedResponse randomBreedResponse){
-        Picasso.get()
+        }
     }
 
 }

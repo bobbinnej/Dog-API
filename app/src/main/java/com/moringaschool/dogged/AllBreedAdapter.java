@@ -34,8 +34,8 @@ public class AllBreedAdapter extends RecyclerView.Adapter<AllBreedViewHolder> {
     public AllBreedViewHolder onCreateViewHolder( ViewGroup  parent, int viewType) {
 
         // create a viewholder and inflate its xml layout
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.allbreed_item,parent,false);
-        return new AllBreedViewHolder(view);
+        View view;
+        return null;
     }
 
     @Override
@@ -53,7 +53,7 @@ public class AllBreedAdapter extends RecyclerView.Adapter<AllBreedViewHolder> {
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            breedName=itemView.findViewById(R.id.breedName);
+
         }
     }
 }

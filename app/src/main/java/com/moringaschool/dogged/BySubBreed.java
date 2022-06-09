@@ -54,7 +54,7 @@ public class BySubBreed extends Fragment {
                 int status=response.code();
                 SubBreedResponse subBreedResponse=response.body();
 
-                List<String>list=subBreedResponse.getMessage();
+               List<String>list=subBreedResponse.getMessage();
                 subRecycler.setAdapter(new SubbreedAdapter(list, getContext()));
             }
 

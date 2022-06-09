@@ -25,7 +25,7 @@
                android:layout_height="80dp"
                android:id="@+id/breedTitle"
                android:textColor="@color/black"
-               android:text="An array of all images from hound-afghan breed"
+               android:text="Random images of hound dog breed"
                android:gravity="center"
                android:textSize="20sp"
                android:fontFamily="@font/courgette"/>

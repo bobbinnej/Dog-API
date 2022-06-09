@@ -28,7 +28,7 @@
                 android:textColor="@color/black"
                 android:fontFamily="@font/courgette"
                 android:textAlignment="center"
-                android:text="An array of all sub-breeds from a breed"
+                android:text="An array of images from Afghan hound subbreed"
                 android:gravity="center"/>
 
         </RelativeLayout>

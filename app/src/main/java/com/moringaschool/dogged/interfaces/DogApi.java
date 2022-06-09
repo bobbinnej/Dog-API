@@ -23,10 +23,10 @@ public interface DogApi {
     Call<RandomBreedResponse> getRandomBreed();
 
    //method to getting different dog images from a breed
-    @GET("breed/hound/images")
+    @GET("breed/hound/images/random/3")
     Call<BreedResponse> getBreed();
 
     //method to get different images from a subbreed
-    @GET("breed/hound/list")
+    @GET("breed/hound/afghan/images")
     Call<SubBreedResponse>getSubBreed();
 }

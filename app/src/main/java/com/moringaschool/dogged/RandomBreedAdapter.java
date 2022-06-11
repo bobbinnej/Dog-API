@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,7 +24,7 @@ import butterknife.ButterKnife;
 public class RandomBreedAdapter extends RecyclerView.Adapter<RandomBreedAdapter.itemViewHolder> {
     private Context context;
     private List<String> random;
-
+    ProgressBar progressBar;
     public RandomBreedAdapter(List<String> random, Context context) {
         this.random = random;
         this.context=context;
@@ -54,11 +55,18 @@ public class RandomBreedAdapter extends RecyclerView.Adapter<RandomBreedAdapter.
     public class itemViewHolder extends RecyclerView.ViewHolder{
         @BindView(R.id.randomImageView) ImageView randomImage;
 
+
+
         public itemViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
 
+
+
         }
     }
+
+
+
 
 }

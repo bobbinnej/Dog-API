@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.moringaschool.dogged.Adapters.SubbreedAdapter;
 import com.moringaschool.dogged.RetrofitClient.DogClient;
 import com.moringaschool.dogged.interfaces.DogApi;
 import com.moringaschool.dogged.models.SubBreedResponse;
@@ -31,6 +32,7 @@ public class BySubBreed extends Fragment {
     DogApi dogApi;
     private List<SubBreedResponse> subbreed;
     LinearLayoutManager linearLayoutManager;
+
 
     // recycler view
     @BindView(R.id.subbreedRecycler)  RecyclerView subRecycler;

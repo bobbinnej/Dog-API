@@ -21,6 +21,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/LGPL2.1'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/notice.txt'
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -59,8 +71,19 @@ dependencies {
     annotationProcessor 'org.parceler:parceler:1.1.12'
     //picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
-
-    
+    //swipe to refresh
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+    //shimmer effect dependency
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+    //firebase
+    implementation platform('com.google.firebase:firebase-bom:26.4.0')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-database'
+    //firebase auth
+    implementation 'com.google.firebase:firebase-auth'
+    //firebase ui
+    implementation 'com.firebaseui:firebase-ui-database:7.1.1'
 
 
 }
+apply plugin: 'com.google.gms.google-services'

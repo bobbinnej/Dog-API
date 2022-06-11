@@ -1,4 +1,4 @@
-package com.moringaschool.dogged;
+package com.moringaschool.dogged.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.moringaschool.dogged.models.SubBreedResponse;
+import com.moringaschool.dogged.R;
 
 import java.util.List;
 

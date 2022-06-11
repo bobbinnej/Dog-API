@@ -1,4 +1,4 @@
-package com.moringaschool.dogged;
+package com.moringaschool.dogged.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.moringaschool.dogged.AllBreedViewHolder;
 import com.moringaschool.dogged.models.ListAllBreedsResponse;
 
 import java.util.ArrayList;

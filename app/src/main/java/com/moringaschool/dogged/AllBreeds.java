@@ -14,8 +14,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
+import com.moringaschool.dogged.Adapters.AllBreedAdapter;
 import com.moringaschool.dogged.RetrofitClient.DogClient;
 import com.moringaschool.dogged.interfaces.DogApi;
 import com.moringaschool.dogged.models.ListAllBreedsResponse;

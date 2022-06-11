@@ -10,4 +10,5 @@
     <color name="purple"> #6a0dad</color>
     <color name="brown">#8B4513</color>
     <color name="maroon">#C9B1C6</color>
+    <color name="shimmer">#dddddd</color>
 </resources>

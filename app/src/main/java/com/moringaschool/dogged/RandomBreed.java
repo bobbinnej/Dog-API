@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,7 +48,8 @@ public class RandomBreed extends Fragment {
     private RandomBreedAdapter randomBreedAdapter;
     LinearLayoutManager linearLayoutManager;
     Context context;
-    ShimmerFrameLayout shimmerFrameLayout;
+    private ShimmerFrameLayout shimmerFrameLayout;
+
     @BindView(R.id.randomRecycler) RecyclerView randomRecycler;
     @BindView(R.id.swipeRefreshRandom) SwipeRefreshLayout swipeRefreshLayout;
 
@@ -57,15 +59,19 @@ public class RandomBreed extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
          ButterKnife.bind(this,view);
-        shimmerFrameLayout=view.findViewById(R.id.shimmer);
-       shimmerFrameLayout.startShimmer();
-
-
         randomRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         swipeRefreshLayout.setColorSchemeColors(R.color.ic_launcher_background);
-
         dogApi= DogClient.getClient();
-        getRandomBreed();
+        shimmerFrameLayout=view.findViewById(R.id.shimmerFrameLayout);
+        shimmerFrameLayout.startShimmer();
+        final Handler handler=new Handler(Looper.getMainLooper());
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                getRandomBreed();
+            }
+        }, 5000);
+
     }
 
 
@@ -75,18 +81,21 @@ public class RandomBreed extends Fragment {
         call.enqueue(new Callback<RandomBreedResponse>() {
             @Override
             public void onResponse(Call<RandomBreedResponse> call, Response<RandomBreedResponse> response) {
-                if(response.isSuccessful()){
-                    int status = response.code();
-                    RandomBreedResponse randomBreedResponse=response.body();
-                    List<String> list=randomBreedResponse.getMessage();
-                    //setting adapter to recycler view;
-                    randomRecycler.setAdapter(new RandomBreedAdapter(list, getContext()));
-                    randomBreedAdapter.notifyDataSetChanged();
+                  if(response.isSuccessful()){
+                      shimmerFrameLayout.stopShimmer();
+                      shimmerFrameLayout.setVisibility(View.GONE);
+                      int status = response.code();
+                      RandomBreedResponse randomBreedResponse=response.body();
+                      List<String> list=randomBreedResponse.getMessage();
+                      //setting adapter to recycler view;
+                      randomRecycler.setAdapter(new RandomBreedAdapter(list, getContext()));
+                     
 
-                }
+                      stopShimmerAndShowRecyclerView();
 
-                shimmerFrameLayout.stopShimmer();
-                shimmerFrameLayout.setVisibility(View.GONE);
+                  }
+
+
 
                     swipeRefreshLayout();
             }
@@ -100,18 +109,9 @@ public class RandomBreed extends Fragment {
             }
         });
     }
-    //shimmer
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        shimmerFrameLayout.startShimmer();
-    }
+    private void stopShimmerAndShowRecyclerView() {
 
-    @Override
-    public void onPause() {
-        shimmerFrameLayout.stopShimmer();
-        super.onPause();
 
     }
 

@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.moringaschool.dogged.models.RandomBreedResponse;
 import com.squareup.picasso.Picasso;
 
@@ -24,7 +25,6 @@ import butterknife.ButterKnife;
 public class RandomBreedAdapter extends RecyclerView.Adapter<RandomBreedAdapter.itemViewHolder> {
     private Context context;
     private List<String> random;
-    ProgressBar progressBar;
     public RandomBreedAdapter(List<String> random, Context context) {
         this.random = random;
         this.context=context;
@@ -42,8 +42,8 @@ public class RandomBreedAdapter extends RecyclerView.Adapter<RandomBreedAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull itemViewHolder holder, int position) {
-        Glide.with(context).load(random.get(position)).into(holder.randomImage);
 
+            Glide.with(context).load(random.get(position)).into(holder.randomImage);
     }
 
     @Override
@@ -54,8 +54,6 @@ public class RandomBreedAdapter extends RecyclerView.Adapter<RandomBreedAdapter.
 
     public class itemViewHolder extends RecyclerView.ViewHolder{
         @BindView(R.id.randomImageView) ImageView randomImage;
-
-
 
         public itemViewHolder(@NonNull View itemView) {
             super(itemView);

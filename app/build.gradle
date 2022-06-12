@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -33,56 +34,62 @@ android {
         exclude 'META-INF/NOTICE'
         exclude 'META-INF/notice.txt'
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+    buildFeatures {
+        dataBinding=true
     }
 }
 
-dependencies {
+    dependencies {
 
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.6.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+        implementation 'androidx.appcompat:appcompat:1.4.2'
+        implementation 'com.google.android.material:material:1.6.1'
+        implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+        testImplementation 'junit:junit:4.13.2'
+        androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+        androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
-    //splashscreen dependency
-    implementation 'androidx.core:core-splashscreen:1.0.0-beta02'
-    // retrofit dependency
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    //gson dependency
-    implementation 'com.google.code.gson:gson:2.8.7'
-    //material design dependency
-    implementation 'com.google.android.material:material:1.2.0-alpha02'
+        //splashscreen dependency
+        implementation 'androidx.core:core-splashscreen:1.0.0-rc01'
+        // retrofit dependency
+        implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+        implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+        //gson dependency
+        implementation 'com.google.code.gson:gson:2.9.0'
+        //material design dependency
+        implementation 'com.google.android.material:material:1.7.0-alpha02'
 
-    //glide dependency
-    implementation 'com.github.bumptech.glide:glide:4.12.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
-    //butterknife dependency
-    implementation 'com.jakewharton:butterknife:10.2.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
-    //viewpager dependency
-    implementation 'androidx.viewpager:viewpager:1.1.0-alpha01'
-    // Parceler
-    implementation 'org.parceler:parceler-api:1.1.12'
-    annotationProcessor 'org.parceler:parceler:1.1.12'
-    //picasso
-    implementation 'com.squareup.picasso:picasso:2.71828'
-    //swipe to refresh
-    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
-    //shimmer effect dependency
-    implementation 'com.facebook.shimmer:shimmer:0.5.0'
-    //firebase
-    implementation platform('com.google.firebase:firebase-bom:26.4.0')
-    implementation 'com.google.firebase:firebase-analytics'
-    implementation 'com.google.firebase:firebase-database'
-    //firebase auth
-    implementation 'com.google.firebase:firebase-auth'
-    //firebase ui
-    implementation 'com.firebaseui:firebase-ui-database:7.1.1'
+        //glide dependency
+        implementation 'com.github.bumptech.glide:glide:4.12.0'
+        annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+        //butter knife dependency
+        implementation 'com.jakewharton:butterknife:10.2.0'
+        annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
+        //viewpager dependency
+        implementation 'androidx.viewpager:viewpager:1.1.0-alpha01'
+        // Parceler
+        implementation 'org.parceler:parceler-api:1.1.12'
+        annotationProcessor 'org.parceler:parceler:1.1.12'
+        //picasso
+        implementation 'com.squareup.picasso:picasso:2.71828'
+        //swipe to refresh
+        implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+        //shimmer effect dependency
+        implementation 'com.facebook.shimmer:shimmer:0.5.0'
+        // Import the Firebase BoM
+        implementation platform('com.google.firebase:firebase-bom:30.1.0')
+        // Declare the dependency for the Firebase SDK for Google Analytics
+        implementation 'com.google.firebase:firebase-analytics'
+        implementation 'com.google.firebase:firebase-auth'
+        implementation 'com.google.firebase:firebase-firestore'
+        implementation 'com.google.firebase:firebase-database'
+//        //firebase auth
+//        implementation 'com.google.firebase:firebase-auth'
+//        //firebase ui
+//
+    }
 
 
-}

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "519961254035",
+    "firebase_url": "https://dog-breeds-e2d05-default-rtdb.firebaseio.com",
+    "project_id": "dog-breeds-e2d05",
+    "storage_bucket": "dog-breeds-e2d05.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:519961254035:android:f453098f4f7b989e5ad566",
+        "android_client_info": {
+          "package_name": "com.moringaschool.dogged"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "519961254035-jojl7o38cj2begf08pkmlq7ib33jtk1n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUC4bATim9cjNVF1wEyrL7oIvY8vm4SC4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "519961254035-jojl7o38cj2begf08pkmlq7ib33jtk1n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

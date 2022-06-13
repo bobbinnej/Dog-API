@@ -37,11 +37,11 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="17dp"
         android:layout_marginBottom="408dp"
-        android:hint="Email Address"
-        android:textColorHint="@color/white"
         android:ems="10"
-        android:inputType="textEmailAddress"
         android:fontFamily="sans-serif-black"
+        android:hint="Email Address"
+        android:inputType="textEmailAddress"
+        android:textColorHint="@color/white"
         android:textSize="24sp" />
 
     <EditText
@@ -67,14 +67,14 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="11dp"
+        android:layout_marginBottom="218dp"
         android:backgroundTint="@color/black"
-        android:textColor="@color/white"
-        android:text="Login"
-        android:gravity="center"
-        android:textSize="26sp"
-        android:textStyle="bold"
         android:fontFamily="sans-serif-black"
-        android:layout_marginBottom="218dp" />
+        android:gravity="center"
+        android:text="Login"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        android:textStyle="bold" />
 
 
     <TextView
@@ -112,12 +112,12 @@
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="39dp"
         android:layout_height="32dp"
-        android:layout_alignParentEnd="true"
+        android:layout_alignParentCenter="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginEnd="179dp"
         android:layout_marginBottom="295dp"
-        android:visibility="visible"
+        android:visibility="gone"
         tools:ignore="MissingConstraints" />
 
 </RelativeLayout>

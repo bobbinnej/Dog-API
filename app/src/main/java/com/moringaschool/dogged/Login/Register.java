@@ -118,13 +118,18 @@ public class Register extends Activity implements View.OnClickListener {
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if(task.isSuccessful()){
                                                 Toast.makeText(Register.this,"New user registered successfully!", Toast.LENGTH_LONG).show();
-                                                signupProgressBar.setVisibility(View.VISIBLE);
+                                                signupProgressBar.setVisibility(View.GONE);
 
                                             }else{
                                                 Toast.makeText(Register.this, "Registration failed! Try again", Toast.LENGTH_LONG).show();
+                                                signupProgressBar.setVisibility(View.GONE);
                                             }
                                         }
                                     });
+                        }else{
+                            Toast.makeText(Register.this, "Registration failed! Try again", Toast.LENGTH_LONG).show();
+                            signupProgressBar.setVisibility(View.GONE);
+
                         }
 
                     }

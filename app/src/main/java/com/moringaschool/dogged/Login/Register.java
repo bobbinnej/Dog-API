@@ -126,10 +126,6 @@ public class Register extends Activity implements View.OnClickListener {
                                             }
                                         }
                                     });
-                        }else{
-                            Toast.makeText(Register.this, "Registration failed! Try again", Toast.LENGTH_LONG).show();
-                            signupProgressBar.setVisibility(View.GONE);
-
                         }
 
                     }

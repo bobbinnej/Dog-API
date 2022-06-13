@@ -62,7 +62,9 @@ public class RandomBreed extends Fragment {
         randomRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         swipeRefreshLayout.setColorSchemeColors(R.color.ic_launcher_background);
         dogApi= DogClient.getClient();
-      //  shimmerFrameLayout=view.findViewById(R.id.shimmerFrameLayout);
+
+
+       shimmerFrameLayout=view.findViewById(R.id.shimmerFrameLayout);
         shimmerFrameLayout.startShimmer();
         final Handler handler=new Handler(Looper.getMainLooper());
         handler.postDelayed(new Runnable() {
@@ -92,10 +94,8 @@ public class RandomBreed extends Fragment {
                       stopShimmerAndShowRecyclerView();
 
                   }
-
-                    swipeRefreshLayout();
+//                    swipeRefreshLayout();
             }
-
 
             @Override
             public void onFailure(Call<RandomBreedResponse> call, Throwable t) {
@@ -111,15 +111,15 @@ public class RandomBreed extends Fragment {
 
     }
 
-    private void swipeRefreshLayout() {
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                swipeRefreshLayout.setRefreshing(false);
-                resetRecyclerView();
-            }
-        });
-    }
+//    private void swipeRefreshLayout() {
+//        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                swipeRefreshLayout.setRefreshing(false);
+//                resetRecyclerView();
+//            }
+//        });
+//    }
 
     private void resetRecyclerView() {
 

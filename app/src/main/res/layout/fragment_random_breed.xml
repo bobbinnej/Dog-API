@@ -57,7 +57,6 @@
 
                <include layout="@layout/shimmer_layout">
                </include>
-
                <include layout="@layout/shimmer_layout">
                </include>
                <include layout="@layout/shimmer_layout">

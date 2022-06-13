@@ -1,7 +1,6 @@
 package com.moringaschool.dogged.Login;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,8 +11,9 @@ import com.moringaschool.dogged.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class LoginActivity extends AppCompatActivity implements  View.OnClickListener {
-    @BindView(R.id.signUp) TextView signup;
+public class LoginActivity extends Activity implements  View.OnClickListener {
+    @BindView(R.id.signUp)
+    TextView signup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +28,11 @@ public class LoginActivity extends AppCompatActivity implements  View.OnClickLis
 
     @Override
     public void onClick(View v) {
-      switch(v.getId()){
-          case R.id.signUp:
-              startActivity(new Intent(this,Register.class));
-              break;
-      }
+        switch(v.getId()){
+            case R.id.signUp:
+                startActivity(new Intent(this, Register.class));
+                break;
+        }
     }
 }
+

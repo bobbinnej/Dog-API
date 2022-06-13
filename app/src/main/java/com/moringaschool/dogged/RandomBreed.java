@@ -89,13 +89,9 @@ public class RandomBreed extends Fragment {
                       List<String> list=randomBreedResponse.getMessage();
                       //setting adapter to recycler view;
                       randomRecycler.setAdapter(new RandomBreedAdapter(list, getContext()));
-                     
-
                       stopShimmerAndShowRecyclerView();
 
                   }
-
-
 
                     swipeRefreshLayout();
             }

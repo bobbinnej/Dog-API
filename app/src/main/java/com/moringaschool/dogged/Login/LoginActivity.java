@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.moringaschool.dogged.R;
+import com.moringaschool.dogged.RandomBreed;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,6 +41,8 @@ public class LoginActivity extends Activity implements  View.OnClickListener {
 
         // add an onclick listener to the signup text view
         signup.setOnClickListener(this);
+        // initialize mAuth
+        mAuth=FirebaseAuth.getInstance();
 
     }
 
@@ -89,6 +92,7 @@ public class LoginActivity extends Activity implements  View.OnClickListener {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     // redirect to splashscreen
+                    startActivity(new Intent(LoginActivity.this, RandomBreed.class));
 
                 }else{
                     Toast.makeText(LoginActivity.this, "Failed to login! Check your Credentials!", Toast.LENGTH_LONG).show();

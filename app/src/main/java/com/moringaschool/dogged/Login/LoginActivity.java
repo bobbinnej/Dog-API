@@ -3,12 +3,19 @@ package com.moringaschool.dogged.Login;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.moringaschool.dogged.R;
 
@@ -43,8 +50,52 @@ public class LoginActivity extends Activity implements  View.OnClickListener {
                 startActivity(new Intent(this, Register.class));
                 break;
             case R.id.signIn:
+                userLogin();
+                break;
 
         }
+    }
+
+    private void userLogin() {
+        // validation
+        String email=emailLoginEditText.getText().toString().trim();
+        String password= passwordLoginEditText.getText().toString().trim();
+
+        if(email.isEmpty()){
+            emailLoginEditText.setError("Email is required");
+            emailLoginEditText.requestFocus();
+            return;
+        }
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            emailLoginEditText.setError("Input a valid email format");
+            emailLoginEditText.requestFocus();
+            return;
+        }
+
+
+        if (password.isEmpty()) {
+            passwordLoginEditText.setError("Password is required");
+            passwordLoginEditText.requestFocus();
+            return;
+        }
+        if(password.length()<6){
+            passwordLoginEditText.setError("Min password length is 6 characters!");
+            passwordLoginEditText.requestFocus();
+            return;
+        }
+        loginProgressBar.setVisibility(View.VISIBLE);
+        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    // redirect to splashscreen
+
+                }else{
+                    Toast.makeText(LoginActivity.this, "Failed to login! Check your Credentials!", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
     }
 }
 

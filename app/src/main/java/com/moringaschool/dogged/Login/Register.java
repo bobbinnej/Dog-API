@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -16,6 +17,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 import com.moringaschool.dogged.R;
 
 import java.util.regex.Pattern;
@@ -80,7 +82,7 @@ public class Register extends Activity implements View.OnClickListener {
             return;
         }
         // to ensure email matches correct format
-        if(Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             signupEmailEditText.setError("This is not a valid email structure");
             signupEmailEditText.requestFocus();
             return;
@@ -107,11 +109,26 @@ public class Register extends Activity implements View.OnClickListener {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            UserObject userObject=new UserObject(fullName, email)
+                            UserObject userObject=new UserObject(fullName, email);
+                            //send user data to realtime database
+                            FirebaseDatabase.getInstance().getReference("Users")
+                                    .child(FirebaseAuth.getInstance().getUid())
+                                    .setValue(userObject).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if(task.isSuccessful()){
+                                                Toast.makeText(Register.this,"New user registered successfully!", Toast.LENGTH_LONG).show();
+                                                signupProgressBar.setVisibility(View.VISIBLE);
+
+                                            }else{
+                                                Toast.makeText(Register.this, "Registration failed! Try again", Toast.LENGTH_LONG).show();
+                                            }
+                                        }
+                                    });
                         }
 
                     }
-                })
+                });
 
 
     }

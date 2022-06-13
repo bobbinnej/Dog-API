@@ -10,6 +10,11 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.moringaschool.dogged.R;
 
@@ -94,5 +99,20 @@ public class Register extends Activity implements View.OnClickListener {
             signupPasswordEditText.requestFocus();
             return;
         }
+        // set visibility of progress bar to true once you click register
+        signupProgressBar.setVisibility(View.VISIBLE);
+        mAuth.createUserWithEmailAndPassword(email,password)
+        //check if user has been registered
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            UserObject userObject=new UserObject(fullName, email)
+                        }
+
+                    }
+                })
+
+
     }
 }

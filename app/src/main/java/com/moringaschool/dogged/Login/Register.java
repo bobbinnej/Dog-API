@@ -2,6 +2,7 @@ package com.moringaschool.dogged.Login;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -41,6 +42,12 @@ public class Register extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
+
+        //change color of edittext inputs to white
+        fullNameEditText.setTextColor(Color.parseColor("#FFFFFFFF"));
+        signupEmailEditText.setTextColor(Color.parseColor("#FFFFFFFF"));
+        signupPasswordEditText.setTextColor(Color.parseColor("#FFFFFFFF"));
+
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
         title.setOnClickListener(this);

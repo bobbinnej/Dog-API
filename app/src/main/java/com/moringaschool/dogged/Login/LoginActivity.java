@@ -2,6 +2,7 @@ package com.moringaschool.dogged.Login;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.moringaschool.dogged.MainActivity;
 import com.moringaschool.dogged.R;
 import com.moringaschool.dogged.RandomBreed;
 
@@ -39,10 +41,17 @@ public class LoginActivity extends Activity implements  View.OnClickListener {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
-        // add an onclick listener to the signup text view
-        signup.setOnClickListener(this);
+        //change color of edittext inputs to white
+        emailLoginEditText.setTextColor(Color.parseColor("#FFFFFFFF"));
+        passwordLoginEditText.setTextColor(Color.parseColor("#FFFFFFFF"));
+
         // initialize mAuth
         mAuth=FirebaseAuth.getInstance();
+
+        // add an onclick listener to the signup text view
+        signIn.setOnClickListener(this);
+
+
 
     }
 
@@ -92,7 +101,8 @@ public class LoginActivity extends Activity implements  View.OnClickListener {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     // redirect to splashscreen
-                    startActivity(new Intent(LoginActivity.this, RandomBreed.class));
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    finish();
 
                 }else{
                     Toast.makeText(LoginActivity.this, "Failed to login! Check your Credentials!", Toast.LENGTH_LONG).show();

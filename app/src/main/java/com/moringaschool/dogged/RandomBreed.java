@@ -62,7 +62,7 @@ public class RandomBreed extends Fragment {
         randomRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         swipeRefreshLayout.setColorSchemeColors(R.color.ic_launcher_background);
         dogApi= DogClient.getClient();
-        shimmerFrameLayout=view.findViewById(R.id.shimmerFrameLayout);
+      //  shimmerFrameLayout=view.findViewById(R.id.shimmerFrameLayout);
         shimmerFrameLayout.startShimmer();
         final Handler handler=new Handler(Looper.getMainLooper());
         handler.postDelayed(new Runnable() {

@@ -105,12 +105,14 @@
 
     <Button
         android:id="@+id/registerUser"
-        android:layout_width="380dp"
+        android:layout_width="368dp"
         android:layout_height="70dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/signUpPassword"
         android:layout_marginTop="14dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="15dp"
         android:backgroundTint="@color/black"
         android:text="SIGN UP"
         android:textColor="@color/white"

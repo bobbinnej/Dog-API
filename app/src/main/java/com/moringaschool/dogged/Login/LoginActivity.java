@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.moringaschool.dogged.MainActivity;
 import com.moringaschool.dogged.R;
 import com.moringaschool.dogged.RandomBreed;
@@ -100,9 +101,16 @@ public class LoginActivity extends Activity implements  View.OnClickListener {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    // redirect to splashscreen
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                    finish();
+                    // check if email is verified or not
+                    FirebaseUser mUser= FirebaseAuth.getInstance().getCurrentUser();
+                    if(mUser.isEmailVerified()){
+                        // redirect to splashscreen
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        finish();
+                    }else{
+                        mUser.sendEmailVerification();
+                        Toast.makeText(LoginActivity.this, "Check email to verify your account", Toast.LENGTH_LONG).show();
+                    }
 
                 }else{
                     Toast.makeText(LoginActivity.this, "Failed to login! Check your Credentials!", Toast.LENGTH_LONG).show();

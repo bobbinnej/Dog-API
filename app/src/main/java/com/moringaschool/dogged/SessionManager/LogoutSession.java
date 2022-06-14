@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 
 import com.moringaschool.dogged.MainActivity;
 
+import java.util.HashMap;
+
 public class LogoutSession {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
@@ -51,7 +53,13 @@ public class LogoutSession {
          intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
          //start our login activity
          context.startActivity(intent);
-
       }
+   }
+   // store user data
+   public HashMap<String, String> getUserDetails(){
+      HashMap<String,String> user= new HashMap<String,String>();
+      user.put(KEY_EMAIL, sharedPreferences.getString(KEY_EMAIL, null));
+      user.put(KEY_PASSWORD, sharedPreferences.getString(KEY_PASSWORD, null));
+      return user;
    }
 }

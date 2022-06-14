@@ -2,6 +2,7 @@ package com.moringaschool.dogged.Login;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -21,8 +22,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.moringaschool.dogged.R;
 
-import java.util.regex.Pattern;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -35,7 +34,6 @@ public class Register extends Activity implements View.OnClickListener {
     @BindView(R.id.signupProgressBar)
     ProgressBar signupProgressBar;
 
-
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +45,7 @@ public class Register extends Activity implements View.OnClickListener {
         fullNameEditText.setTextColor(Color.parseColor("#FFFFFFFF"));
         signupEmailEditText.setTextColor(Color.parseColor("#FFFFFFFF"));
         signupPasswordEditText.setTextColor(Color.parseColor("#FFFFFFFF"));
+
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();

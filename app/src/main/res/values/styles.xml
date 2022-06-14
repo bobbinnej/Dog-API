@@ -5,5 +5,9 @@
         <item name="android:textSize">10sp</item>
         <item name="textAllCaps">true</item>
     </style>
-
+    
+    <!--customize toolbar theme-->
+    <style name="toolbarTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="colorControlNormal">#fff</item>
+    </style>
 </resources>

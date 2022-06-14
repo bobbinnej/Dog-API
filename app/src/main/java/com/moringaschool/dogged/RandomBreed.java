@@ -55,6 +55,7 @@ public class RandomBreed extends Fragment {
 
     @BindView(R.id.randomRecycler) RecyclerView randomRecycler;
 
+
     @SuppressLint("ResourceAsColor")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -132,12 +133,17 @@ public class RandomBreed extends Fragment {
         int id =item.getItemId();
 
         if(id==R.id.logoutMenu){
-            Toast.makeText(getActivity(),"Logout", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(),"Logging you out...", Toast.LENGTH_SHORT).show();
+            logoutUser();
         }
         if(id==R.id.themeMenu){
             Toast.makeText(getActivity(), "Dark and Light mode", Toast.LENGTH_SHORT).show();
         }
 
         return false;
+    }
+
+    private void logoutUser() {
+
     }
 }

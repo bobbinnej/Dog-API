@@ -21,7 +21,15 @@ public class LogoutSession {
       this.context=context;
       sharedPreferences=context.getSharedPreferences(PREF_NAME,Private_mode);
       editor= sharedPreferences.edit();
+   }
+   // login session for our app
+   public void createLoginSession(String email, String password){
+      editor.putBoolean(IS_LOGGEDIN, true);
 
+      // add our keys
+      editor.putString(KEY_EMAIL, email);
+      editor.putString(KEY_PASSWORD, password);
+      //commit the changes to editor
 
    }
 }

@@ -30,6 +30,12 @@ public class LogoutSession {
       editor.putString(KEY_EMAIL, email);
       editor.putString(KEY_PASSWORD, password);
       //commit the changes to editor
+      editor.commit();
+
+   }
+   // check logged in state
+   public boolean isLoggedIn(){
+      return sharedPreferences.getBoolean(IS_LOGGEDIN, false);
 
    }
 }

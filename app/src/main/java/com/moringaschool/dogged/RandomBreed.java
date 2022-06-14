@@ -51,8 +51,6 @@ public class RandomBreed extends Fragment {
     private ShimmerFrameLayout shimmerFrameLayout;
 
     @BindView(R.id.randomRecycler) RecyclerView randomRecycler;
-    @BindView(R.id.swipeRefreshRandom) SwipeRefreshLayout swipeRefreshLayout;
-
 
     @SuppressLint("ResourceAsColor")
     @Override
@@ -60,7 +58,6 @@ public class RandomBreed extends Fragment {
         super.onViewCreated(view, savedInstanceState);
          ButterKnife.bind(this,view);
         randomRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        swipeRefreshLayout.setColorSchemeColors(R.color.ic_launcher_background);
         dogApi= DogClient.getClient();
 
 
@@ -72,7 +69,7 @@ public class RandomBreed extends Fragment {
             public void run() {
                 getRandomBreed();
             }
-        }, 5000);
+        }, 900);
 
     }
 
@@ -91,41 +88,14 @@ public class RandomBreed extends Fragment {
                       List<String> list=randomBreedResponse.getMessage();
                       //setting adapter to recycler view;
                       randomRecycler.setAdapter(new RandomBreedAdapter(list, getContext()));
-                      stopShimmerAndShowRecyclerView();
-
                   }
-//                    swipeRefreshLayout();
             }
 
             @Override
             public void onFailure(Call<RandomBreedResponse> call, Throwable t) {
                 Log.e(TAG,"OOOOOOPERATION  get Random Breed FAILED"+t.getMessage());
-
-
             }
         });
-    }
-
-    private void stopShimmerAndShowRecyclerView() {
-
-
-    }
-
-//    private void swipeRefreshLayout() {
-//        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//                swipeRefreshLayout.setRefreshing(false);
-//                resetRecyclerView();
-//            }
-//        });
-//    }
-
-    private void resetRecyclerView() {
-
-        //Collections.shuffle(getContext(), new Random(System.currentTimeMillis()));
-
-
     }
 
 

@@ -1,7 +1,10 @@
 package com.moringaschool.dogged.SessionManager;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+
+import com.moringaschool.dogged.MainActivity;
 
 public class LogoutSession {
     SharedPreferences sharedPreferences;
@@ -37,5 +40,18 @@ public class LogoutSession {
    public boolean isLoggedIn(){
       return sharedPreferences.getBoolean(IS_LOGGEDIN, false);
 
+   }
+   // if user logs in.. let them be directed to to mainactivity
+   public void checkLogin(){
+      if(!this.isLoggedIn()){
+         Intent intent= new Intent(context, MainActivity.class);
+         //close all activities
+         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+         // flag to start our activity
+         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+         //start our login activity
+         context.startActivity(intent);
+
+      }
    }
 }

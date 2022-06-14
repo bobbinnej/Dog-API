@@ -28,6 +28,7 @@ import android.widget.Toast;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.moringaschool.dogged.RetrofitClient.DogClient;
+//import com.moringaschool.dogged.SessionManager.LogoutSession;
 import com.moringaschool.dogged.interfaces.DogApi;
 import com.moringaschool.dogged.models.BreedResponse;
 import com.moringaschool.dogged.models.RandomBreedResponse;
@@ -52,6 +53,7 @@ public class RandomBreed extends Fragment {
     LinearLayoutManager linearLayoutManager;
     Context context;
     private ShimmerFrameLayout shimmerFrameLayout;
+//    LogoutSession session;
 
     @BindView(R.id.randomRecycler) RecyclerView randomRecycler;
 
@@ -134,7 +136,8 @@ public class RandomBreed extends Fragment {
 
         if(id==R.id.logoutMenu){
             Toast.makeText(getActivity(),"Logging you out...", Toast.LENGTH_SHORT).show();
-            logoutUser();
+
+            return true;
         }
         if(id==R.id.themeMenu){
             Toast.makeText(getActivity(), "Dark and Light mode", Toast.LENGTH_SHORT).show();

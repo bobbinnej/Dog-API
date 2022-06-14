@@ -3,7 +3,9 @@ package com.moringaschool.dogged.Login;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.tv.TvInputService;
 import android.os.Bundle;
+import android.se.omapi.Session;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +24,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.moringaschool.dogged.MainActivity;
 import com.moringaschool.dogged.R;
 import com.moringaschool.dogged.RandomBreed;
+//import com.moringaschool.dogged.SessionManager.LogoutSession;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,6 +36,8 @@ public class LoginActivity extends Activity implements  View.OnClickListener {
     @BindView(R.id.signIn) Button signIn;
     @BindView(R.id.loginProgressBar) ProgressBar loginProgressBar;
 
+//    LogoutSession session;
+
 
     private FirebaseAuth mAuth;
 
@@ -42,6 +47,8 @@ public class LoginActivity extends Activity implements  View.OnClickListener {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
+//        session= new LogoutSession(getApplicationContext());
+//        session.checkLogin();
         //change color of edittext inputs to white
         emailLoginEditText.setTextColor(Color.parseColor("#FFFFFFFF"));
         passwordLoginEditText.setTextColor(Color.parseColor("#FFFFFFFF"));

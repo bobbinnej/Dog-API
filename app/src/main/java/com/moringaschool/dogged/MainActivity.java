@@ -6,7 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TableLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.splashscreen.SplashScreen;
@@ -35,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
    private ByBreed bybreedfragment;
    private BySubBreed bysubbreedfragment;
    private AllBreeds allbreedsfragment;
-   private OptionsMenu optionsmenufragment;
+
 
 
 
@@ -49,14 +54,14 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         //toolbar
         setSupportActionBar(toolbar);
-        getSupportActionBar().hide();// this particula line will hide the title bar
+//        getSupportActionBar().hide();// this particula line will hide the title bar
         toolbar.setTitleTextColor(Color.WHITE);
 
         randombreedfragment=new RandomBreed();
         bybreedfragment=new ByBreed();
         bysubbreedfragment=new BySubBreed();
         allbreedsfragment=new AllBreeds();
-        optionsmenufragment=new OptionsMenu();
+
 
         tablayout.setupWithViewPager(viewpager);
         //viewpager adapter for our tab layout to add dynamic views
@@ -65,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
         viewPagerAdapter.addFragment(bybreedfragment,"Breed");
         viewPagerAdapter.addFragment( bysubbreedfragment,"SubBreed");
         viewPagerAdapter.addFragment(allbreedsfragment,"BreedList");
-        viewPagerAdapter.addFragment(optionsmenufragment, "");
         viewpager.setAdapter(viewPagerAdapter);
 
         //display our icons for the titles
@@ -73,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         tablayout.getTabAt(1).setIcon(R.drawable.ic_breed2);
         tablayout.getTabAt(2).setIcon(R.drawable.ic_subbreed1);
         tablayout.getTabAt(3).setIcon(R.drawable.ic_allbreed1);
-        tablayout.getTabAt(4).setIcon(R.drawable.ic_menu_svgrepo_com);
+
 
     }
   // inner class for our viewpager adapter that extende fragment adapter pager class
@@ -111,4 +115,5 @@ public class MainActivity extends AppCompatActivity {
           return fragmentTitle.get(position);
       }
   }
+
 }

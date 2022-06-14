@@ -12,8 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.moringaschool.dogged.Adapters.AllBreedAdapter;
 import com.moringaschool.dogged.RetrofitClient.DogClient;
@@ -76,6 +80,36 @@ public class AllBreeds extends Fragment {
         recyclerView.setAdapter(new AllBreedAdapter(listAllBreedsResponses));
 
         return view;
+    }
+
+    // enable options menu
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        // inflate our menu
+        inflater.inflate(R.menu.sidemenu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        // handle menu item clicks
+        int id =item.getItemId();
+
+        if(id==R.id.logoutMenu){
+            Toast.makeText(getActivity(),"Logout", Toast.LENGTH_SHORT).show();
+        }
+        if(id==R.id.themeMenu){
+            Toast.makeText(getActivity(), "Dark and Light mode", Toast.LENGTH_SHORT).show();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 

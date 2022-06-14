@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
+<!--    <include layout="@layout/toolbar"/>-->
     
     
     <com.google.android.material.appbar.AppBarLayout
@@ -23,6 +25,7 @@
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            app:tabTextAppearance="@style/TabLayoutTextAppearance"
+           app:tabGravity="center"
            app:tabMode="scrollable">
 
 

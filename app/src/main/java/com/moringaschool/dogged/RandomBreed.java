@@ -17,6 +17,9 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
@@ -108,5 +111,33 @@ public class RandomBreed extends Fragment {
         return view;
     }
 
+    // enable options menu
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+        inflater.inflate(R.menu.sidemenu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected( MenuItem item) {
+        // handle menu item clicks
+        int id =item.getItemId();
+
+        if(id==R.id.logoutMenu){
+            Toast.makeText(getActivity(),"Logout", Toast.LENGTH_SHORT).show();
+        }
+        if(id==R.id.themeMenu){
+            Toast.makeText(getActivity(), "Dark and Light mode", Toast.LENGTH_SHORT).show();
+        }
+
+        return false;
+    }
+}

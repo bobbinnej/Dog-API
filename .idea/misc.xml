@@ -25,11 +25,15 @@
         <entry key="app/src/main/res/layout/fragment_browse_breed_list.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/fragment_by_breed.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_by_sub_breed.xml" value="0.19375" />
+        <entry key="app/src/main/res/layout/fragment_options_menu.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/fragment_random_breed.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/logoutmenu.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/layout/random_breed_item.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/layout/randombreed_item.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/shimmer_layout.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/subbreed_item.xml" value="0.19270833333333334" />
+        <entry key="app/src/main/res/layout/toolbar.xml" value="0.25" />
+        <entry key="app/src/main/res/menu/sidemenu.xml" value="0.19375" />
       </map>
     </option>
   </component>

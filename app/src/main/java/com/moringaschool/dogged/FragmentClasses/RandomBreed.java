@@ -1,10 +1,9 @@
-package com.moringaschool.dogged;
+package com.moringaschool.dogged.FragmentClasses;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,35 +11,23 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
-import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
-import com.google.firebase.auth.FirebaseAuth;
-import com.moringaschool.dogged.Login.LoginActivity;
+import com.moringaschool.dogged.Adapters.RandomBreedAdapter;
+import com.moringaschool.dogged.R;
 import com.moringaschool.dogged.RetrofitClient.DogClient;
 //import com.moringaschool.dogged.SessionManager.LogoutSession;
 import com.moringaschool.dogged.interfaces.DogApi;
-import com.moringaschool.dogged.models.BreedResponse;
 import com.moringaschool.dogged.models.RandomBreedResponse;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

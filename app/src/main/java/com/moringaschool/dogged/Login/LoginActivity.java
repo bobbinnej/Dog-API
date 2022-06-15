@@ -5,9 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
-import android.media.tv.TvInputService;
 import android.os.Bundle;
-import android.se.omapi.Session;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentManager;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -26,7 +23,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.moringaschool.dogged.MainActivity;
 import com.moringaschool.dogged.R;
-import com.moringaschool.dogged.RandomBreed;
 //import com.moringaschool.dogged.SessionManager.LogoutSession;
 
 import butterknife.BindView;
@@ -63,8 +59,7 @@ public class LoginActivity extends Activity implements  View.OnClickListener {
 
         // add an onclick listener to the signup text view
         signIn.setOnClickListener(this);
-
-
+        signup.setOnClickListener(this);
 
     }
 
@@ -73,6 +68,7 @@ public class LoginActivity extends Activity implements  View.OnClickListener {
         switch(v.getId()){
             case R.id.signUp:
                 startActivity(new Intent(this, Register.class));
+                finish();
                 break;
             case R.id.signIn:
                 userLogin();

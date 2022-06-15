@@ -7,12 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.TableLayout;
-import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.splashscreen.SplashScreen;
@@ -20,10 +17,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.moringaschool.dogged.FragmentClasses.AllBreeds;
+import com.moringaschool.dogged.FragmentClasses.ByBreed;
+import com.moringaschool.dogged.FragmentClasses.BySubBreed;
+import com.moringaschool.dogged.FragmentClasses.RandomBreed;
 import com.moringaschool.dogged.Login.LoginActivity;
 
 import java.util.ArrayList;

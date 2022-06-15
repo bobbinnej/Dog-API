@@ -1,4 +1,4 @@
-package com.moringaschool.dogged;
+package com.moringaschool.dogged.FragmentClasses;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.moringaschool.dogged.Adapters.AllBreedAdapter;
+import com.moringaschool.dogged.R;
 import com.moringaschool.dogged.RetrofitClient.DogClient;
 import com.moringaschool.dogged.interfaces.DogApi;
 import com.moringaschool.dogged.models.ListAllBreedsResponse;
@@ -74,10 +75,7 @@ public class AllBreeds extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_all_breeds,container,false);
-        recyclerView=view.findViewById(R.id.recycle);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        recyclerView.setAdapter(new AllBreedAdapter(listAllBreedsResponses));
+
 
         return view;
     }

@@ -1,9 +1,11 @@
 package com.moringaschool.dogged.interfaces;
 
 import com.moringaschool.dogged.models.BreedResponse;
+
 import com.moringaschool.dogged.models.ListAllBreedsResponse;
 import com.moringaschool.dogged.models.RandomBreedResponse;
 import com.moringaschool.dogged.models.SubBreedResponse;
+
 
 import java.util.List;
 

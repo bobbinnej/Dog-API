@@ -1,21 +1,16 @@
-package com.moringaschool.dogged;
+package com.moringaschool.dogged.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.facebook.shimmer.ShimmerFrameLayout;
-import com.moringaschool.dogged.models.RandomBreedResponse;
-import com.squareup.picasso.Picasso;
+import com.moringaschool.dogged.R;
 
 import java.util.List;
 

@@ -1,60 +1,43 @@
 package com.moringaschool.dogged.Adapters;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.moringaschool.dogged.AllBreedViewHolder;
 import com.moringaschool.dogged.models.ListAllBreedsResponse;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class AllBreedAdapter extends RecyclerView.Adapter<AllBreedViewHolder> {
-    private List<ListAllBreedsResponse> listAllBreedsResponses;
-    public AllBreedAdapter(List<ListAllBreedsResponse> listAllBreedsResponses) {
-        this.listAllBreedsResponses = listAllBreedsResponses;
-    }
+import butterknife.BindView;
 
-
-
-
-
-
-
-
-
-
+public class AllBreedAdapter extends RecyclerView.Adapter<AllBreedAdapter.dogHolder> {
+ private Context context;
+ private List<String>allbreed;
     @NonNull
     @Override
-    public AllBreedViewHolder onCreateViewHolder( ViewGroup  parent, int viewType) {
-
-        // create a viewholder and inflate its xml layout
-        View view;
+    public dogHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        //inflate allbreed item
         return null;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AllBreedViewHolder holder, int position) {
-      holder.getView().setText(listAllBreedsResponses.get(position).getMessage());
+    public void onBindViewHolder(@NonNull dogHolder holder, int position) {
 
     }
+
     @Override
     public int getItemCount() {
         return 0;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView breedName;
-        public ViewHolder(@NonNull View itemView) {
+    public class dogHolder extends RecyclerView.ViewHolder{
+
+        public dogHolder(@NonNull View itemView) {
             super(itemView);
-
-
         }
     }
+
 }

@@ -1,4 +1,4 @@
-package com.moringaschool.dogged;
+package com.moringaschool.dogged.FragmentClasses;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
@@ -12,13 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
+import com.moringaschool.dogged.Adapters.BreedAdapter;
+import com.moringaschool.dogged.R;
 import com.moringaschool.dogged.RetrofitClient.DogClient;
 import com.moringaschool.dogged.interfaces.DogApi;
 import com.moringaschool.dogged.models.BreedResponse;

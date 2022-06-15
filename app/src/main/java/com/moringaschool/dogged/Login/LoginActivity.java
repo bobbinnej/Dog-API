@@ -1,6 +1,8 @@
 package com.moringaschool.dogged.Login;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.tv.TvInputService;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -36,6 +39,8 @@ public class LoginActivity extends Activity implements  View.OnClickListener {
     @BindView(R.id.signIn) Button signIn;
     @BindView(R.id.loginProgressBar) ProgressBar loginProgressBar;
 
+    private AlertDialog alertDialog;
+
 //    LogoutSession session;
 
 
@@ -47,9 +52,9 @@ public class LoginActivity extends Activity implements  View.OnClickListener {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
-//        session= new LogoutSession(getApplicationContext());
-//        session.checkLogin();
-        //change color of edittext inputs to white
+
+
+
         emailLoginEditText.setTextColor(Color.parseColor("#FFFFFFFF"));
         passwordLoginEditText.setTextColor(Color.parseColor("#FFFFFFFF"));
 
@@ -108,20 +113,35 @@ public class LoginActivity extends Activity implements  View.OnClickListener {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
+                    AlertDialog.Builder builder= new AlertDialog.Builder(LoginActivity.this);
+                    builder.setMessage("Login successful.....");
+                    builder.setTitle("Login");
+                    builder.setCancelable(false);
+
                     // check if email is verified or not
                     FirebaseUser mUser= FirebaseAuth.getInstance().getCurrentUser();
                     if(mUser.isEmailVerified()){
-                        // redirect to splashscreen
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                        finish();
+                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // redirect to splashscreen
+                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                finish();
+                                dialog.cancel();
+                            }
+                        });
+
                     }else{
                         mUser.sendEmailVerification();
                         Toast.makeText(LoginActivity.this, "Check email to verify your account", Toast.LENGTH_LONG).show();
                     }
+                    AlertDialog alertDialog=builder.create();
+                    alertDialog.show();
 
                 }else{
                     Toast.makeText(LoginActivity.this, "Failed to login! Check your Credentials!", Toast.LENGTH_LONG).show();
                 }
+
             }
         });
 

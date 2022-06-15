@@ -90,27 +90,6 @@ public class AllBreeds extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        // inflate our menu
-        inflater.inflate(R.menu.sidemenu, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        // handle menu item clicks
-        int id =item.getItemId();
-
-        if(id==R.id.logoutMenu){
-            Toast.makeText(getActivity(),"Logout", Toast.LENGTH_SHORT).show();
-        }
-        if(id==R.id.themeMenu){
-            Toast.makeText(getActivity(), "Dark and Light mode", Toast.LENGTH_SHORT).show();
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
 
 }

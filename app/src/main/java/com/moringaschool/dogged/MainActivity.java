@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -22,6 +23,8 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.moringaschool.dogged.Login.LoginActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -115,5 +118,41 @@ public class MainActivity extends AppCompatActivity {
           return fragmentTitle.get(position);
       }
   }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.clear();
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.sidemenu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+    @Override
+    public boolean onOptionsItemSelected( MenuItem item) {
+        // handle menu item clicks
+        int id =item.getItemId();
+
+        if(id==R.id.logoutMenu){
+            //Toast.makeText(getActivity(),"Logging you out...", Toast.LENGTH_SHORT).show();
+            logoutUser();
+
+            return true;
+        }
+        if(id==R.id.themeMenu){
+           // Toast.makeText(getActivity(), "Dark and Light mode", Toast.LENGTH_SHORT).show();
+        }
+
+        return false;
+    }
+
+    private void logoutUser() {
+        FirebaseAuth.getInstance().signOut();
+        // back to logoutActivity
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+
+    }
 
 }

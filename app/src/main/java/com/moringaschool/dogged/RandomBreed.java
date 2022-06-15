@@ -4,6 +4,7 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -27,6 +28,8 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.moringaschool.dogged.Login.LoginActivity;
 import com.moringaschool.dogged.RetrofitClient.DogClient;
 //import com.moringaschool.dogged.SessionManager.LogoutSession;
 import com.moringaschool.dogged.interfaces.DogApi;
@@ -122,31 +125,6 @@ public class RandomBreed extends Fragment {
         setHasOptionsMenu(true);
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        menu.clear();
-        inflater.inflate(R.menu.sidemenu, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
 
-    @Override
-    public boolean onOptionsItemSelected( MenuItem item) {
-        // handle menu item clicks
-        int id =item.getItemId();
 
-        if(id==R.id.logoutMenu){
-            Toast.makeText(getActivity(),"Logging you out...", Toast.LENGTH_SHORT).show();
-
-            return true;
-        }
-        if(id==R.id.themeMenu){
-            Toast.makeText(getActivity(), "Dark and Light mode", Toast.LENGTH_SHORT).show();
-        }
-
-        return false;
-    }
-
-    private void logoutUser() {
-
-    }
 }

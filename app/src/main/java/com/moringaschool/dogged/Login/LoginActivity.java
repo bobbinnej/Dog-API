@@ -114,8 +114,8 @@ public class LoginActivity extends Activity implements  View.OnClickListener {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     AlertDialog.Builder builder= new AlertDialog.Builder(LoginActivity.this);
-                    builder.setMessage("Login successful.....");
-                    builder.setTitle("Login");
+                    builder.setMessage("Logging you in....");
+                    builder.setTitle("Success");
                     builder.setCancelable(false);
 
                     // check if email is verified or not

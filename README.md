@@ -20,7 +20,8 @@ It contains images of dog collection which according to different views,the imag
 ## Behaviour Driven Development
 This is the expected user interactivity with the app.
 It is expected that the user:
-* Launch the app and be met with a splash screen.
+*Launch the app and be met with a splash screen
+* For a new user,  create an account then login
 * The first view is the Random breed that displays random images of all dog collections.
 * The second view is Breed that displays images from a particular breed
 * The third view is the subbreed view that displays images of dogs from a subbreed.
@@ -28,9 +29,11 @@ It is expected that the user:
 
 ## Technologies used
 * Java programming languange
-* Picasso for displaying images
+* Glide for displaying images
 * Retrofit for consuming api data
 * Android IDE
+* Firebase to store and retrieve realtime information
+* Shared preferences for sytematic storage of data
 
 ## Set Up Instructions
 * Fork the Dog Api repo from https://github.com/bobbinnej/Dog-API

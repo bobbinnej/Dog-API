@@ -34,6 +34,7 @@ public class LoginActivity extends Activity implements  View.OnClickListener {
     @BindView(R.id.passwordLogin) EditText passwordLoginEditText;
     @BindView(R.id.signIn) Button signIn;
     @BindView(R.id.loginProgressBar) ProgressBar loginProgressBar;
+    @BindView(R.id.forgotPassword) TextView forgotPassword;
 
     private AlertDialog alertDialog;
 
@@ -60,6 +61,7 @@ public class LoginActivity extends Activity implements  View.OnClickListener {
         // add an onclick listener to the signup text view
         signIn.setOnClickListener(this);
         signup.setOnClickListener(this);
+        forgotPassword.setOnClickListener(this);
 
     }
 
@@ -72,6 +74,10 @@ public class LoginActivity extends Activity implements  View.OnClickListener {
                 break;
             case R.id.signIn:
                 userLogin();
+                break;
+            case R.id.forgotPassword:
+                startActivity(new Intent(this, ForgotPasswordActivity.class));
+                finish();
                 break;
 
         }

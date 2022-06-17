@@ -6,7 +6,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Patterns;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,8 +40,7 @@ public class LoginActivity extends Activity implements  View.OnClickListener {
     @BindView(R.id.forgotPassword) TextView forgotPassword;
 
     private AlertDialog alertDialog;
-
-//    LogoutSession session;
+    boolean passwordVisible;
 
 
     private FirebaseAuth mAuth;
@@ -48,9 +50,6 @@ public class LoginActivity extends Activity implements  View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-
-
-
 
         emailLoginEditText.setTextColor(Color.parseColor("#FFFFFFFF"));
         passwordLoginEditText.setTextColor(Color.parseColor("#FFFFFFFF"));
@@ -62,6 +61,35 @@ public class LoginActivity extends Activity implements  View.OnClickListener {
         signIn.setOnClickListener(this);
         signup.setOnClickListener(this);
         forgotPassword.setOnClickListener(this);
+        //show and hide password using the eye icon
+        passwordLoginEditText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+              final int Right=2;
+              if(event.getAction()==MotionEvent.ACTION_UP){
+                  if(event.getRawX()>=passwordLoginEditText.getRight()-passwordLoginEditText.getCompoundDrawables()[Right].getBounds().width()){
+                      int selection=passwordLoginEditText.getSelectionEnd();
+                      if(passwordVisible){
+                          //set drawable eye icon
+                          passwordLoginEditText.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_baseline_visibility_off_24,0);
+                          // hide password
+                          passwordLoginEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                          passwordVisible=false;
+
+                      }else{
+                          //set drawable eye icon
+                          passwordLoginEditText.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_baseline_visibility_24,0);
+                          // show password
+                          passwordLoginEditText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                          passwordVisible=true;
+                      }
+                      passwordLoginEditText.setSelection(selection);
+                      return true;
+                  }
+              }
+                return false;
+            }
+        });
 
     }
 

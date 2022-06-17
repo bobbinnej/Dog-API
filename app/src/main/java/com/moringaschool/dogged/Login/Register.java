@@ -5,7 +5,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Patterns;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,15 +29,22 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class Register extends Activity implements View.OnClickListener {
-    @BindView(R.id.title) TextView title;
-    @BindView(R.id.registerUser) Button registerUser;
-    @BindView(R.id.fullName) EditText fullNameEditText;
-    @BindView(R.id.signupEmail)  EditText signupEmailEditText;
-    @BindView(R.id.signUpPassword) EditText signupPasswordEditText;
+    @BindView(R.id.title)
+    TextView title;
+    @BindView(R.id.registerUser)
+    Button registerUser;
+    @BindView(R.id.fullName)
+    EditText fullNameEditText;
+    @BindView(R.id.signupEmail)
+    EditText signupEmailEditText;
+    @BindView(R.id.signUpPassword)
+    EditText signupPasswordEditText;
     @BindView(R.id.signupProgressBar)
     ProgressBar signupProgressBar;
+    boolean passwordVisible;
 
     private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,10 +62,37 @@ public class Register extends Activity implements View.OnClickListener {
         title.setOnClickListener(this);
         registerUser.setOnClickListener(this);
 
+        // show and hide password using eye icon
+        signupPasswordEditText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                final int Right = 2;
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    if (event.getRawX() >= signupPasswordEditText.getRight() - signupPasswordEditText.getCompoundDrawables()[Right].getBounds().width()) {
+                        int selection = signupPasswordEditText.getSelectionEnd();
+                        if (passwordVisible) {
+                            //set drawable eye icon
+                            signupPasswordEditText.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_baseline_visibility_off_24, 0);
+                            // hide password
+                            signupPasswordEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                            passwordVisible = false;
 
+                        } else {
+                            //set drawable eye icon
+                            signupPasswordEditText.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_baseline_visibility_24, 0);
+                            // show password
+                            signupPasswordEditText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                            passwordVisible = true;
+                        }
+                        signupPasswordEditText.setSelection(selection);
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
 
     }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()){

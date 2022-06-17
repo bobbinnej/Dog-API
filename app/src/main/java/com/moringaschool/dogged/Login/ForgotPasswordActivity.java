@@ -3,12 +3,15 @@ package com.moringaschool.dogged.Login;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,6 +29,8 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     Button resetpassword;
     @BindView(R.id.forgotProgressBar)
     ProgressBar forgotProgressBar;
+    @BindView(R.id.title)
+    TextView title;
 
     FirebaseAuth auth;
 
@@ -36,16 +41,23 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_forgot_password);
         ButterKnife.bind(this);
 
+        // change color of input in email edit text
+        emailForgotEditText.setTextColor(Color.parseColor("#FFFFFFFF"));
+        // add an onclick listener to title
+
         auth=FirebaseAuth.getInstance();
         resetpassword.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 resetPassword();
             }
         });
 
 
     }
+
+
 
     private void resetPassword() {
         // validation of inputs
@@ -67,8 +79,12 @@ public class ForgotPasswordActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(ForgotPasswordActivity.this, "Proceed to your email to reset your password", Toast.LENGTH_LONG).show();
+                    forgotProgressBar.setVisibility(View.GONE);
+
+
                 }else{
                     Toast.makeText(ForgotPasswordActivity.this, "Something went wrong! Please Try again later", Toast.LENGTH_LONG).show();
+                    forgotProgressBar.setVisibility(View.GONE);
                 }
             }
         });

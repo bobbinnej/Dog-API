@@ -38,6 +38,7 @@ public class LoginActivity extends Activity implements  View.OnClickListener {
     @BindView(R.id.signIn) Button signIn;
     @BindView(R.id.loginProgressBar) ProgressBar loginProgressBar;
     @BindView(R.id.forgotPassword) TextView forgotPassword;
+    @BindView(R.id.title) TextView title;
 
     private AlertDialog alertDialog;
     boolean passwordVisible;
@@ -61,6 +62,8 @@ public class LoginActivity extends Activity implements  View.OnClickListener {
         signIn.setOnClickListener(this);
         signup.setOnClickListener(this);
         forgotPassword.setOnClickListener(this);
+        title.setOnClickListener(this);
+
         //show and hide password using the eye icon
         passwordLoginEditText.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -105,6 +108,10 @@ public class LoginActivity extends Activity implements  View.OnClickListener {
                 break;
             case R.id.forgotPassword:
                 startActivity(new Intent(this, ForgotPasswordActivity.class));
+                finish();
+                break;
+            case R.id.title:
+                startActivity(new Intent(this, Register.class));
                 finish();
                 break;
 
@@ -160,13 +167,14 @@ public class LoginActivity extends Activity implements  View.OnClickListener {
                                 dialog.cancel();
                             }
                         });
+                        AlertDialog alertDialog=builder.create();
+                        alertDialog.show();
+
 
                     }else{
-                        mUser.sendEmailVerification();
                         Toast.makeText(LoginActivity.this, "Check email to verify your account", Toast.LENGTH_LONG).show();
+
                     }
-                    AlertDialog alertDialog=builder.create();
-                    alertDialog.show();
 
                 }else{
                     Toast.makeText(LoginActivity.this, "Failed to login! Check your Credentials!", Toast.LENGTH_LONG).show();

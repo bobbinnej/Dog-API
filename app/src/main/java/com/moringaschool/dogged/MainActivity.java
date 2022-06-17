@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
    private ByBreed bybreedfragment;
    private BySubBreed bysubbreedfragment;
    private AllBreeds allbreedsfragment;
+   private AlertDialog alertDialog;
 
 
 
@@ -147,11 +150,30 @@ public class MainActivity extends AppCompatActivity {
 
     private void logoutUser() {
         FirebaseAuth.getInstance().signOut();
-        // back to logoutActivity
-        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
+        AlertDialog.Builder builder= new AlertDialog.Builder(MainActivity.this);
+        builder.setMessage("Are you sure you want to logout");
+        builder.setTitle("Success");
+        builder.setCancelable(false);
+
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // redirect to splashscreen
+                startActivity(new Intent(MainActivity.this, MainActivity.class));
+                finish();
+                dialog.cancel();
+
+                // back to logoutActivity
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            }
+        });
+        AlertDialog alertDialog=builder.create();
+        alertDialog.show();
+
+
 
     }
 

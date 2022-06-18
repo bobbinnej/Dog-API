@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
@@ -35,6 +36,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String FILE_NAME ="myFile" ;
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.view_pager) ViewPager viewpager;
     @BindView(R.id.tab_layout)   TabLayout tablayout;
@@ -46,10 +48,6 @@ public class MainActivity extends AppCompatActivity {
    private BySubBreed bysubbreedfragment;
    private AllBreeds allbreedsfragment;
    private AlertDialog alertDialog;
-
-
-
-
 
 
     @Override
@@ -83,6 +81,11 @@ public class MainActivity extends AppCompatActivity {
         tablayout.getTabAt(1).setIcon(R.drawable.ic_breed2);
         tablayout.getTabAt(2).setIcon(R.drawable.ic_subbreed1);
         tablayout.getTabAt(3).setIcon(R.drawable.ic_allbreed1);
+
+        // shared preference
+        SharedPreferences sharedPreferences=getSharedPreferences(FILE_NAME, MODE_PRIVATE);
+        String email= sharedPreferences.getString("email","Data Not found");
+
 
 
     }

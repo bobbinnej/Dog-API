@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
@@ -12,6 +13,7 @@ import android.util.Patterns;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -32,6 +34,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class LoginActivity extends Activity implements  View.OnClickListener {
+    private static final String FILE_NAME = "myFile";
     @BindView(R.id.signUp) TextView signup;
     @BindView(R.id.emailLogin) EditText emailLoginEditText;
     @BindView(R.id.passwordLogin) EditText passwordLoginEditText;
@@ -39,11 +42,10 @@ public class LoginActivity extends Activity implements  View.OnClickListener {
     @BindView(R.id.loginProgressBar) ProgressBar loginProgressBar;
     @BindView(R.id.forgotPassword) TextView forgotPassword;
     @BindView(R.id.title) TextView title;
+    @BindView(R.id.checkBoxRemember) CheckBox rememberMe;
 
     private AlertDialog alertDialog;
     boolean passwordVisible;
-
-
     private FirebaseAuth mAuth;
 
     @Override
@@ -51,10 +53,16 @@ public class LoginActivity extends Activity implements  View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-
+        // set color of edittext inputs to white
         emailLoginEditText.setTextColor(Color.parseColor("#FFFFFFFF"));
         passwordLoginEditText.setTextColor(Color.parseColor("#FFFFFFFF"));
 
+        SharedPreferences sharedPreferences=getSharedPreferences(FILE_NAME,MODE_PRIVATE);
+        String email= sharedPreferences.getString("email","");
+        String password=sharedPreferences.getString("password","");
+        emailLoginEditText.setText(email);
+        passwordLoginEditText.setText(password);
+        
         // initialize mAuth
         mAuth=FirebaseAuth.getInstance();
 
@@ -116,6 +124,7 @@ public class LoginActivity extends Activity implements  View.OnClickListener {
                 break;
 
         }
+
     }
 
     private void userLogin() {
@@ -144,6 +153,10 @@ public class LoginActivity extends Activity implements  View.OnClickListener {
             passwordLoginEditText.setError("Min password length is 6 characters!");
             passwordLoginEditText.requestFocus();
             return;
+        }
+        // checkbox functionality
+        if(rememberMe.isChecked()){
+            storeDataUsingSharedPreference(email, password);
         }
         loginProgressBar.setVisibility(View.VISIBLE);
         mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -183,5 +196,12 @@ public class LoginActivity extends Activity implements  View.OnClickListener {
             }
         });
 
+    }
+    //remember me functionality
+    private void storeDataUsingSharedPreference(String email, String password) {
+        SharedPreferences.Editor editor=getSharedPreferences(FILE_NAME,MODE_PRIVATE).edit();
+        editor.putString("email",email);
+        editor.putString("password",password);
+        editor.apply();
     }
 }

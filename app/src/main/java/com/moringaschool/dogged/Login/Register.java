@@ -153,7 +153,8 @@ public class Register extends Activity implements View.OnClickListener {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             UserObject userObject=new UserObject(fullName, email);
-                            //send user data to realtime database
+                            //send user data  a to realtime database
+                            //
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getUid())
                                     .setValue(userObject).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -162,8 +163,6 @@ public class Register extends Activity implements View.OnClickListener {
                                             if(task.isSuccessful()){
                                                 Toast.makeText(Register.this,"New user registered successfully!", Toast.LENGTH_LONG).show();
                                                 signupProgressBar.setVisibility(View.GONE);
-
-
                                             }else{
                                                 Toast.makeText(Register.this, "Registration failed! Try again", Toast.LENGTH_LONG).show();
                                                 signupProgressBar.setVisibility(View.GONE);

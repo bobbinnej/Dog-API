@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:title="Theme"
-        android:id="@+id/themeMenu"/>
+        android:title="Potrait"
+        android:id="@+id/potrait"/>
+
+    <item
+        android:title="Landscape"
+        android:id="@+id/landscape"/>
     <item
         android:title="Logout"
         android:id="@+id/logoutMenu"/>

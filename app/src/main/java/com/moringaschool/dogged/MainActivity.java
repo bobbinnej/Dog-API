@@ -8,6 +8,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -149,8 +150,14 @@ public class MainActivity extends AppCompatActivity {
 
             return true;
         }
-        if(id==R.id.themeMenu){
-           // Toast.makeText(getActivity(), "Dark and Light mode", Toast.LENGTH_SHORT).show();
+
+        if(id==R.id.potrait){
+         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
+
+        if(id==R.id.landscape){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         }
 
         return false;

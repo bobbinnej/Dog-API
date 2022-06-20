@@ -8,11 +8,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.moringaschool.dogged.FragmentClasses.ByBreed;
 
-public class FirebaseBreedsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+public class FirebaseSavedViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
     View mView;
     Context mcontext;
 
-    public FirebaseBreedsViewHolder( View itemView) {
+    public FirebaseSavedViewHolder(View itemView) {
         super(itemView);
         mView=itemView;
         mcontext=itemView.getContext();

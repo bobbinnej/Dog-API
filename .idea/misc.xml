@@ -7,11 +7,18 @@
         <entry key="app/src/main/res/drawable/ic_allbreed1.xml" value="0.181" />
         <entry key="app/src/main/res/drawable/ic_breed1.xml" value="0.181" />
         <entry key="app/src/main/res/drawable/ic_breed2.xml" value="0.181" />
+        <entry key="app/src/main/res/drawable/ic_dislike.xml" value="0.147" />
         <entry key="app/src/main/res/drawable/ic_dog_breed_svgrepo_com.xml" value="0.181" />
         <entry key="app/src/main/res/drawable/ic_dog_side.xml" value="0.181" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.181" />
+        <entry key="app/src/main/res/drawable/ic_like.xml" value="0.147" />
+        <entry key="app/src/main/res/drawable/ic_liked.xml" value="0.147" />
         <entry key="app/src/main/res/drawable/ic_paw.xml" value="0.181" />
         <entry key="app/src/main/res/drawable/ic_random1.xml" value="0.181" />
+        <entry key="app/src/main/res/drawable/ic_save.xml" value="0.147" />
+        <entry key="app/src/main/res/drawable/ripple_effect_outline.xml" value="0.147" />
+        <entry key="app/src/main/res/drawable/ripple_effect_raised.xml" value="0.147" />
+        <entry key="app/src/main/res/drawable/ripple_effect_text.xml" value="0.147" />
         <entry key="app/src/main/res/font/charm.xml" value="0.22395833333333334" />
         <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
@@ -29,8 +36,9 @@
         <entry key="app/src/main/res/layout/fragment_options_menu.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/fragment_random_breed.xml" value="0.22" />
         <entry key="app/src/main/res/layout/logoutmenu.xml" value="0.19270833333333334" />
-        <entry key="app/src/main/res/layout/random_breed_item.xml" value="0.19270833333333334" />
+        <entry key="app/src/main/res/layout/random_breed_item.xml" value="0.2211690363349131" />
         <entry key="app/src/main/res/layout/randombreed_item.xml" value="0.19375" />
+        <entry key="app/src/main/res/layout/ripple_effect_raised.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/layout/shimmer_layout.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/subbreed_item.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/layout/toolbar.xml" value="0.25" />

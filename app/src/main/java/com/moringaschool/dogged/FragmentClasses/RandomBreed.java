@@ -4,6 +4,7 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Matrix;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,14 +17,26 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.ktx.Firebase;
 import com.moringaschool.dogged.Adapters.RandomBreedAdapter;
 import com.moringaschool.dogged.R;
 import com.moringaschool.dogged.RetrofitClient.DogClient;
 //import com.moringaschool.dogged.SessionManager.LogoutSession;
+import com.moringaschool.dogged.constants.Constants;
 import com.moringaschool.dogged.interfaces.DogApi;
 import com.moringaschool.dogged.models.RandomBreedResponse;
 
@@ -43,18 +56,28 @@ public class RandomBreed extends Fragment {
     LinearLayoutManager linearLayoutManager;
     Context context;
     private ShimmerFrameLayout shimmerFrameLayout;
-//    LogoutSession session;
-
+    private ScaleGestureDetector scaleGestureDetector;
+    private Matrix matrix=new Matrix();
+    ImageView imageView;
     @BindView(R.id.randomRecycler) RecyclerView randomRecycler;
 
 
     @SuppressLint("ResourceAsColor")
+
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
          ButterKnife.bind(this,view);
+
+         imageView=view.findViewById(R.id.randomImageView);
+         scaleGestureDetector=new ScaleGestureDetector(randomRecycler.getContext(), new ScaleListener());
+
+
         randomRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         dogApi= DogClient.getClient();
+
+
 
 
        shimmerFrameLayout=view.findViewById(R.id.shimmerFrameLayout);
@@ -67,6 +90,24 @@ public class RandomBreed extends Fragment {
             }
         }, 900);
 
+    }
+
+//zo in and out
+    public boolean onTouchEvent(MotionEvent event){
+        scaleGestureDetector.onTouchEvent(event);
+        return true;
+    }
+
+    class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener{
+        @Override
+        public boolean onScale(ScaleGestureDetector detector) {
+            float scaleFactor= detector.getScaleFactor();
+            scaleFactor=Math.max(0.1f, Math.min(scaleFactor,5.0f));
+            matrix.setScale(scaleFactor,scaleFactor);
+            imageView.setImageMatrix(matrix);
+            
+            return true;
+        }
     }
 
 
@@ -98,9 +139,7 @@ public class RandomBreed extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View view=inflater.inflate(R.layout.fragment_random_breed, container, false);
-
         return view;
     }
 
@@ -111,6 +150,7 @@ public class RandomBreed extends Fragment {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
     }
+
 
 
 

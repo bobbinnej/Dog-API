@@ -117,6 +117,7 @@ public class RandomBreedAdapter extends RecyclerView.Adapter<RandomBreedAdapter.
                 if(snapshot.child(user.getUid()).exists()){
                     imageView.setImageResource(R.drawable.ic_liked);
                     imageView.setTag("Liked");
+                   // Toast.makeText(context.getApplicationContext(), "Liked", Toast.LENGTH_SHORT).show();
 
                 }else{
                     imageView.setImageResource(R.drawable.ic_dislike);
